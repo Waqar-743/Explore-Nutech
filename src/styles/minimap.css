@@ -1,0 +1,79 @@
+/* ================================================================
+   Minimap & Toggle Button
+   ================================================================ */
+
+#minimap-toggle {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 901;
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-full);
+    background: var(--bg-dark);
+    border: 1px solid var(--glass-border);
+    color: var(--text-primary);
+    font-size: 1.3rem;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(12px);
+    transition: all var(--transition-medium);
+    box-shadow: var(--shadow-sm);
+}
+
+#minimap-toggle.active {
+    display: flex;
+    animation: fadeIn 0.4s var(--ease-smooth);
+}
+
+#minimap-toggle:hover {
+    background: rgba(17, 88, 77, 0.45);
+    border-color: var(--glass-border-hover);
+    transform: scale(1.08);
+}
+
+#minimap-toggle.map-open {
+    background: rgba(17, 88, 77, 0.5);
+    border-color: var(--primary);
+}
+
+/* ===== Minimap Panel ===== */
+#minimap {
+    position: fixed;
+    top: 72px;
+    left: 16px;
+    z-index: 900;
+    width: 280px;
+    height: 240px;
+    background: var(--bg-panel);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(16px);
+    padding: 14px;
+    box-shadow: var(--shadow-lg);
+    display: none;
+    overflow: hidden;
+}
+
+#minimap.active {
+    display: block;
+    animation: slideInLeft 0.35s var(--ease-bounce);
+}
+
+#minimap-title {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: 600;
+}
+
+#minimap-canvas {
+    width: 100%;
+    height: calc(100% - 22px);
+    border-radius: var(--radius-sm);
+}

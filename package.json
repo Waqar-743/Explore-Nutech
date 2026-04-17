@@ -1,0 +1,22 @@
+{
+  "name": "nutech-360-tour",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "NUTECH Campus 360° Virtual Tour",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^6.3.1"
+  },
+  "dependencies": {
+    "@photo-sphere-viewer/autorotate-plugin": "^5.13.2",
+    "@photo-sphere-viewer/core": "^5.13.2",
+    "@photo-sphere-viewer/markers-plugin": "^5.13.2",
+    "@photo-sphere-viewer/virtual-tour-plugin": "^5.13.2",
+    "three": "^0.175.0"
+  }
+}

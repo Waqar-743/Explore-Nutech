@@ -1,0 +1,134 @@
+/* ================================================================
+   Welcome Screen Overlay
+   ================================================================ */
+
+#welcome-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background:
+        linear-gradient(135deg, rgba(5, 5, 16, 0.75), rgba(17, 88, 77, 0.25), rgba(5, 5, 16, 0.75)),
+        url('/Nutech.png') center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-primary);
+    text-align: center;
+    transition: opacity 0.8s var(--ease-smooth), visibility 0.8s var(--ease-smooth);
+}
+
+#welcome-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* Animated gradient border ring */
+#welcome-overlay::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        ellipse at center,
+        transparent 40%,
+        rgba(17, 88, 77, 0.08) 70%,
+        rgba(5, 5, 16, 0.6) 100%
+    );
+    pointer-events: none;
+}
+
+.welcome-content {
+    position: relative;
+    z-index: 1;
+    animation: fadeInUp 1s var(--ease-smooth) both;
+}
+
+.welcome-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 18px;
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    backdrop-filter: blur(10px);
+}
+
+.welcome-badge .badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--primary);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+#welcome-overlay h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    letter-spacing: 6px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.7) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.1;
+}
+
+.welcome-subtitle {
+    font-size: clamp(0.9rem, 2vw, 1.15rem);
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+#start-btn {
+    position: relative;
+    padding: 16px 56px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    transition: transform var(--transition-fast), box-shadow var(--transition-medium);
+    overflow: hidden;
+}
+
+#start-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 3s ease-in-out infinite;
+    border-radius: 50px;
+}
+
+#start-btn:hover {
+    transform: scale(1.06);
+    box-shadow: 0 0 40px var(--primary-glow), 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+#start-btn:active {
+    transform: scale(0.98);
+}
+
+.welcome-footer {
+    margin-top: 48px;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+}

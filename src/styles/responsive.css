@@ -1,0 +1,19 @@
+/* Responsive */
+@media (max-width: 600px) {
+    #minimap { width: 200px; height: 180px; top: 62px; left: 10px; padding: 10px; }
+    #minimap-toggle { top: 10px; left: 10px; width: 42px; height: 42px; font-size: 1.1rem; }
+    #gallery-panel { width: 270px; right: 12px; bottom: 72px; }
+    #gallery-toggle { bottom: 14px; right: 14px; width: 42px; height: 42px; font-size: 1.1rem; }
+    #welcome-overlay h1 { font-size: 1.8rem; letter-spacing: 3px; }
+    .welcome-subtitle { font-size: 0.85rem; }
+    #start-btn { padding: 13px 36px; font-size: 0.9rem; }
+    #tutorial-box { padding: 28px 24px; }
+    #scene-label { font-size: 0.75rem; padding: 8px 20px; }
+    .gallery-item img { height: 60px; }
+}
+
+@media (max-width: 400px) {
+    #welcome-overlay h1 { font-size: 1.5rem; }
+    #minimap { width: 170px; height: 150px; }
+    #gallery-panel { width: 240px; }
+}

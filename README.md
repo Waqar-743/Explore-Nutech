@@ -1,31 +1,70 @@
 # NUTECH 360 Virtual Tour
 
-This repository contains an interactive 360-degree virtual tour of the NUTECH campus. The experience is built around panoramic scenes, navigation hotspots, info markers, a minimap, and a thumbnail gallery for quick scene switching.
+A smooth, interactive 360-degree virtual tour of the NUTECH campus. This project lets visitors explore key locations through panoramic scenes with guided navigation and clean UI controls.
 
-## Features
+## Live Demo
 
-- Immersive 360-degree campus viewing experience.
-- Scene-to-scene navigation through interactive hotspots.
-- Informational markers for key campus details.
-- Minimap for fast location awareness.
-- Thumbnail gallery for direct scene selection.
-- Responsive layout for desktop and mobile use.
+[Click here to view the live tour](https://waqar-743.github.io/Explore-Nutech/)
+
+Note: The live link becomes available after the GitHub Pages workflow runs successfully.
+
+## Highlights
+
+- Interactive 360-degree campus exploration.
+- Scene-to-scene movement using navigation hotspots.
+- Informational markers for important campus spots.
+- Minimap for quick orientation.
+- Thumbnail gallery for fast scene switching.
+- Responsive layout for desktop and mobile.
+
+## Tech Stack
+
+- Vite
+- Vanilla JavaScript (modular structure)
+- Photo Sphere Viewer and plugins
+- CSS modules by feature (gallery, minimap, tutorial, welcome, responsive)
 
 ## Project Structure
 
-- index.html - Main application entry point with the viewer setup and UI.
-- images/ - Panorama assets used by the tour.
-- images/thumbs/ - Thumbnail images for the gallery.
-- check/ - Additional project assets.
+- `index.html`: Main app shell.
+- `src/main.js`: App entry and module orchestration.
+- `src/data/scenes.js`: Scene definitions, links, and minimap connections.
+- `src/modules/`: Viewer, gallery, minimap, tutorial, welcome, hotspots, and autorotate logic.
+- `images/`: Panorama files.
+- `images/thumbs/`: Thumbnail images for the quick gallery.
 
-## How To Use
+## Run Locally
 
-1. Open index.html in a modern browser.
-2. Start the tour from the welcome screen.
-3. Use the hotspots, minimap, and gallery to move around the campus.
+1. Install dependencies:
 
-## Notes
+	```bash
+	npm install
+	```
 
-The project uses Photo Sphere Viewer and related plugins loaded from a CDN, so an active internet connection is required for the viewer libraries.
+2. Start development server:
 
-<p align="center"><strong>Design with love for Nutech</strong></p>
+	```bash
+	npm run dev
+	```
+
+3. Build for production:
+
+	```bash
+	npm run build
+	```
+
+4. Preview production build:
+
+	```bash
+	npm run preview
+	```
+
+## GitHub Pages Deployment
+
+This repository includes an automated GitHub Pages workflow in `.github/workflows/deploy-pages.yml`.
+
+- Every push to `master` triggers a fresh production build.
+- The `dist` folder is published automatically to GitHub Pages.
+- Once deployed, use the Live Demo link above to open the site.
+
+<p align="center"><em>Design by Waqar with Love</em></p>

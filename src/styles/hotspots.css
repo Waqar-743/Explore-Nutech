@@ -1,0 +1,60 @@
+/* ================================================================
+   Hotspot Styles — Navigation & Info Markers
+   ================================================================ */
+
+.hotspot-nav {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: rgba(17,88,77,0.35); border: 2px solid rgba(17,88,77,0.8);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: all 0.3s; position: relative;
+}
+.hotspot-nav::before {
+    content: ''; position: absolute; inset: -5px; border-radius: 50%;
+    border: 1.5px solid rgba(17,88,77,0.4);
+    animation: hotspot-pulse 2.5s ease-in-out infinite;
+}
+.hotspot-nav:hover {
+    background: rgba(17,88,77,0.6); transform: scale(1.2);
+    box-shadow: 0 0 20px rgba(17,88,77,0.4);
+}
+.hotspot-nav svg { width: 15px; height: 15px; fill: #fff; transition: opacity 0.2s; }
+.hotspot-nav.loading svg { opacity: 0; }
+.hotspot-nav.loading::after {
+    content: ''; position: absolute; width: 14px; height: 14px;
+    border: 2px solid rgba(255,255,255,0.3); border-top-color: #fff;
+    border-radius: 50%; animation: nav-spin 0.6s linear infinite;
+}
+@keyframes nav-spin { to { transform: rotate(360deg); } }
+@keyframes hotspot-pulse {
+    0%,100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.5); opacity: 0; }
+}
+
+.hotspot-info {
+    width: 24px; height: 24px; border-radius: 50%;
+    background: rgba(255,193,7,0.3); border: 1.5px solid rgba(255,193,7,0.7);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; font-weight: 700; font-size: 0.68rem; color: #fff;
+    transition: all 0.3s; position: relative;
+}
+.hotspot-info::before {
+    content: ''; position: absolute; inset: -4px; border-radius: 50%;
+    border: 1px solid rgba(255,193,7,0.3);
+    animation: hotspot-pulse 3s ease-in-out infinite;
+}
+.hotspot-info:hover {
+    background: rgba(255,193,7,0.6); transform: scale(1.2);
+    box-shadow: 0 0 16px rgba(255,193,7,0.3);
+}
+
+/* Scene Label */
+#scene-label {
+    position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+    z-index: 800; background: rgba(10,10,30,0.88); color: #fff;
+    padding: 10px 28px; border-radius: 50px; font-size: 0.82rem;
+    font-weight: 500; letter-spacing: 0.8px; backdrop-filter: blur(12px);
+    display: none; border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4); transition: all 0.3s; white-space: nowrap;
+}
+#scene-label.active { display: block; animation: fadeInUp 0.4s ease; }
+#scene-label.changing { animation: fadeInUp 0.35s ease; }
