@@ -3,12 +3,30 @@
  * Each scene: id, name, panorama, thumbnail, description, mapPos, links, infoMarkers
  */
 
+import panorama0 from '../../images/0.jpg';
+import panorama1 from '../../images/1.jpg';
+import panorama2 from '../../images/2.jpg';
+import panorama3 from '../../images/3.jpg';
+import panorama35 from '../../images/3.5.jpg';
+import panorama4 from '../../images/4.jpg';
+import panorama5 from '../../images/5.jpg';
+import panorama6 from '../../images/6.jpg';
+
+import thumb0 from '../../images/thumbs/0.jpg';
+import thumb1 from '../../images/thumbs/1.jpg';
+import thumb2 from '../../images/thumbs/2.jpg';
+import thumb3 from '../../images/thumbs/3.jpg';
+import thumb35 from '../../images/thumbs/3.5.jpg';
+import thumb4 from '../../images/thumbs/4.jpg';
+import thumb5 from '../../images/thumbs/5.jpg';
+import thumb6 from '../../images/thumbs/6.jpg';
+
 export const SCENES = [
     {
         id: '0',
         name: 'Approach Road',
-        panorama: 'images/0.jpg',
-        thumbnail: 'images/thumbs/0.jpg',
+        panorama: panorama0,
+        thumbnail: thumb0,
         description: 'The main approach road leading to the NUTECH campus entrance.',
         mapPos: { x: 30, y: 110 },
         links: [
@@ -22,8 +40,8 @@ export const SCENES = [
     {
         id: '1',
         name: 'Main Gate (NUTECH CTTI)',
-        panorama: 'images/1.jpg',
-        thumbnail: 'images/thumbs/1.jpg',
+        panorama: panorama1,
+        thumbnail: thumb1,
         description: 'The main entrance gate of NUTECH CTTI with Pakistan flags on display.',
         mapPos: { x: 70, y: 110 },
         links: [
@@ -38,8 +56,8 @@ export const SCENES = [
     {
         id: '2',
         name: 'Admin Block Area',
-        panorama: 'images/2.jpg',
-        thumbnail: 'images/thumbs/2.jpg',
+        panorama: panorama2,
+        thumbnail: thumb2,
         description: 'The administrative block area with red-brick architecture and paved walkways.',
         mapPos: { x: 115, y: 95 },
         links: [
@@ -55,8 +73,8 @@ export const SCENES = [
     {
         id: '3',
         name: 'Auditorium & Central Area',
-        panorama: 'images/3.jpg',
-        thumbnail: 'images/thumbs/3.jpg',
+        panorama: panorama3,
+        thumbnail: thumb3,
         description: 'Central campus area featuring the large covered auditorium and multi-story academic block.',
         mapPos: { x: 155, y: 65 },
         links: [
@@ -71,8 +89,8 @@ export const SCENES = [
     {
         id: '3.5',
         name: 'Central Courtyard',
-        panorama: 'images/3.5.jpg',
-        thumbnail: 'images/thumbs/3.5.jpg',
+        panorama: panorama35,
+        thumbnail: thumb35,
         description: 'The central courtyard area connecting the auditorium to the Khalid Block academic wing.',
         mapPos: { x: 172, y: 52 },
         links: [
@@ -87,8 +105,8 @@ export const SCENES = [
     {
         id: '4',
         name: 'Khalid Block',
-        panorama: 'images/4.jpg',
-        thumbnail: 'images/thumbs/4.jpg',
+        panorama: panorama4,
+        thumbnail: thumb4,
         description: 'Khalid Block - Modern academic building with distinctive curved architecture.',
         mapPos: { x: 190, y: 40 },
         links: [
@@ -103,8 +121,8 @@ export const SCENES = [
     {
         id: '5',
         name: 'Main Building & Gardens',
-        panorama: 'images/5.jpg',
-        thumbnail: 'images/thumbs/5.jpg',
+        panorama: panorama5,
+        thumbnail: thumb5,
         description: 'The NUTECH main building entrance with beautifully landscaped gardens.',
         mapPos: { x: 200, y: 110 },
         links: [
@@ -119,8 +137,8 @@ export const SCENES = [
     {
         id: '6',
         name: 'Green Lawn & Library',
-        panorama: 'images/6.jpg',
-        thumbnail: 'images/thumbs/6.jpg',
+        panorama: panorama6,
+        thumbnail: thumb6,
         description: 'Expansive green lawn area with the academic building and clock tower in the background.',
         mapPos: { x: 170, y: 160 },
         links: [
