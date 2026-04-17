@@ -1,5 +1,5 @@
 /* ================================================================
-   Scene Transition Loader — Full-screen loading overlay
+   Scene Transition Loader — Full-screen cinematic loading overlay
    ================================================================ */
 
 #scene-loader {
@@ -10,12 +10,13 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: rgba(5, 5, 16, 0.65);
-    backdrop-filter: blur(8px);
+    background: rgba(4, 4, 14, 0.78);
+    backdrop-filter: blur(14px) saturate(1.5);
+    -webkit-backdrop-filter: blur(14px) saturate(1.5);
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transition: opacity 0.35s var(--ease-smooth), visibility 0.35s var(--ease-smooth);
+    transition: opacity 0.4s var(--ease-smooth), visibility 0.4s var(--ease-smooth);
 }
 
 #scene-loader.active {
@@ -24,70 +25,158 @@
     pointer-events: auto;
 }
 
-/* ===== Spinner Ring ===== */
-.loader-spinner {
-    position: relative;
-    width: 56px;
-    height: 56px;
-    margin-bottom: 20px;
+/* Animated scan line across full screen when active */
+#scene-loader.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(45, 218, 179, 0.7), transparent);
+    animation: scanLine 1.4s ease-in-out infinite;
+    pointer-events: none;
 }
 
-.loader-spinner::before,
+@keyframes scanLine {
+    0%   { top: 0%; opacity: 0; }
+    10%  { opacity: 1; }
+    90%  { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+}
+
+/* ===== Loader Card Container ===== */
+.loader-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    padding: 40px 52px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(45, 218, 179, 0.15);
+    border-radius: 20px;
+    backdrop-filter: blur(24px);
+    box-shadow:
+        0 0 0 1px rgba(45, 218, 179, 0.06),
+        0 24px 64px rgba(0, 0, 0, 0.5),
+        0 0 80px rgba(45, 218, 179, 0.06);
+    animation: loaderCardIn 0.4s var(--ease-smooth) both;
+}
+
+@keyframes loaderCardIn {
+    from { opacity: 0; transform: scale(0.9) translateY(10px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* ===== Multi-Ring Spinner ===== */
+.loader-spinner {
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+/* Outer static ring */
+.loader-spinner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 2px solid rgba(45, 218, 179, 0.12);
+}
+
+/* Main spinning arc */
 .loader-spinner::after {
     content: '';
     position: absolute;
     inset: 0;
     border-radius: 50%;
-}
-
-/* Outer ring */
-.loader-spinner::before {
-    border: 3px solid rgba(255, 255, 255, 0.08);
-}
-
-/* Spinning arc */
-.loader-spinner::after {
     border: 3px solid transparent;
     border-top-color: #2ddab3;
-    border-right-color: rgba(45, 218, 179, 0.4);
-    animation: loaderSpin 0.9s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-    filter: drop-shadow(0 0 8px rgba(45, 218, 179, 0.5));
+    border-right-color: rgba(45, 218, 179, 0.5);
+    animation: loaderSpin 0.85s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    filter: drop-shadow(0 0 10px rgba(45, 218, 179, 0.7));
 }
 
-/* Inner pulse dot */
+/* Middle ring */
+.loader-ring-mid {
+    position: absolute;
+    inset: 12px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    border-bottom-color: rgba(45, 218, 179, 0.45);
+    border-left-color: rgba(45, 218, 179, 0.2);
+    animation: loaderSpin 1.3s cubic-bezier(0.4, 0, 0.2, 1) infinite reverse;
+}
+
+/* Center pulse dot */
 .loader-dot {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 10px;
-    height: 10px;
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
-    background: #2ddab3;
-    box-shadow: 0 0 16px rgba(45, 218, 179, 0.6);
+    background: radial-gradient(circle, #a8ffe8, #2ddab3);
+    box-shadow:
+        0 0 0 0 rgba(45, 218, 179, 0.4),
+        0 0 20px rgba(45, 218, 179, 0.6);
     animation: loaderDotPulse 1.2s ease-in-out infinite;
+}
+
+/* ===== Text Block ===== */
+.loader-text-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
 
 .loader-text {
     font-family: 'Outfit', 'Inter', sans-serif;
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.65);
-    letter-spacing: 3px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.85);
+    letter-spacing: 5px;
     text-transform: uppercase;
-    animation: loaderTextFade 1.5s ease-in-out infinite;
 }
 
+/* Animated progress dots */
+.loader-dots {
+    display: flex;
+    gap: 6px;
+}
+
+.loader-dots span {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #2ddab3;
+    opacity: 0.3;
+    animation: loaderDotBounce 1.2s ease-in-out infinite;
+}
+
+.loader-dots span:nth-child(1) { animation-delay: 0s; }
+.loader-dots span:nth-child(2) { animation-delay: 0.2s; }
+.loader-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+/* ===== Keyframes ===== */
 @keyframes loaderSpin {
     to { transform: rotate(360deg); }
 }
 
 @keyframes loaderDotPulse {
-    0%, 100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-    50% { opacity: 0.4; transform: translate(-50%, -50%) scale(0.6); }
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        box-shadow: 0 0 0 0 rgba(45, 218, 179, 0.4), 0 0 20px rgba(45, 218, 179, 0.6);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(0.65);
+        box-shadow: 0 0 0 8px rgba(45, 218, 179, 0), 0 0 8px rgba(45, 218, 179, 0.3);
+    }
 }
 
-@keyframes loaderTextFade {
-    0%, 100% { opacity: 0.65; }
-    50% { opacity: 0.35; }
+@keyframes loaderDotBounce {
+    0%, 80%, 100% { opacity: 0.3; transform: scale(1); }
+    40% { opacity: 1; transform: scale(1.4); }
 }

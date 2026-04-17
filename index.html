@@ -7,6 +7,9 @@
     <meta name="description" content="Explore the National University of Technology (NUTECH) campus with an immersive 360-degree virtual tour. Navigate through buildings, gardens, and landmarks." />
     <meta name="theme-color" content="#11584D" />
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" />
 </head>
 <body>
 
@@ -20,8 +23,10 @@
             <span class="badge-dot"></span>
             360° Virtual Experience
         </div>
-        <h1>Welcome to NUTECH</h1>
-        <p class="welcome-subtitle">National University of Technology &mdash; Campus Virtual Tour</p>
+        <h1>Welcome to <span class="brand-accent">NUTECH</span></h1>
+        <p class="welcome-tagline">National University of Technology</p>
+        <div class="welcome-divider"></div>
+        <p class="welcome-subtitle">Discover the campus through an immersive,<br>interactive 360° panoramic journey.</p>
         <button id="start-btn">Start Tour</button>
         <p class="welcome-footer">Best experienced on desktop &bull; Click &amp; drag to explore</p>
     </div>
@@ -56,13 +61,7 @@
     <div class="gallery-grid" id="gallery-grid"></div>
 </div>
 
-<!-- ===== SCENE TRANSITION LOADER ===== -->
-<div id="scene-loader">
-    <div class="loader-spinner">
-        <div class="loader-dot"></div>
-    </div>
-    <div class="loader-text">Loading</div>
-</div>
+
 
 <!-- ===== SCENE LABEL ===== -->
 <div id="scene-label"></div>

@@ -13,7 +13,7 @@ import './styles/tutorial.css';
 import './styles/minimap.css';
 import './styles/gallery.css';
 import './styles/hotspots.css';
-import './styles/loader.css';
+
 import './styles/responsive.css';
 
 // ===== Modules =====
@@ -68,33 +68,6 @@ initGallery(virtualTour);
 // ===== Autorotate =====
 const autorotateCtrl = initAutorotate(viewer, autorotate);
 
-// ===== Scene Transition Loader =====
-const sceneLoader = document.getElementById('scene-loader');
-let isFirstLoad = true;
-
-function showLoader() {
-    sceneLoader.classList.add('active');
-}
-
-function hideLoader() {
-    sceneLoader.classList.remove('active');
-}
-
-// Show loader on nav hotspot click
-viewer.container.addEventListener('click', (e) => {
-    const nav = e.target.closest('.hotspot-nav');
-    if (nav) {
-        nav.classList.add('loading');
-        showLoader();
-    }
-});
-
-// Hide loader when panorama finishes loading
-viewer.addEventListener('panorama-loaded', () => {
-    document.querySelectorAll('.hotspot-nav.loading').forEach(el => el.classList.remove('loading'));
-    hideLoader();
-});
-
 // ===== Node Change Event =====
 virtualTour.addEventListener('node-changed', ({ node }) => {
     currentNodeId = node.id;
@@ -103,12 +76,6 @@ virtualTour.addEventListener('node-changed', ({ node }) => {
     updateGalleryHighlight(node.id);
     updateMinimapNode(node.id);
     autorotateCtrl.onSceneChange();
-
-    // Show loader for all navigation (gallery, minimap, etc.) — skip the very first load
-    if (!isFirstLoad) {
-        showLoader();
-    }
-    isFirstLoad = false;
 });
 
 // ===== Close Panels on Outside Click =====
