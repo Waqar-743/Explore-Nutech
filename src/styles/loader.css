@@ -1,0 +1,93 @@
+/* ================================================================
+   Scene Transition Loader — Full-screen loading overlay
+   ================================================================ */
+
+#scene-loader {
+    position: fixed;
+    inset: 0;
+    z-index: 900;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(5, 5, 16, 0.65);
+    backdrop-filter: blur(8px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.35s var(--ease-smooth), visibility 0.35s var(--ease-smooth);
+}
+
+#scene-loader.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* ===== Spinner Ring ===== */
+.loader-spinner {
+    position: relative;
+    width: 56px;
+    height: 56px;
+    margin-bottom: 20px;
+}
+
+.loader-spinner::before,
+.loader-spinner::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+}
+
+/* Outer ring */
+.loader-spinner::before {
+    border: 3px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Spinning arc */
+.loader-spinner::after {
+    border: 3px solid transparent;
+    border-top-color: #2ddab3;
+    border-right-color: rgba(45, 218, 179, 0.4);
+    animation: loaderSpin 0.9s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    filter: drop-shadow(0 0 8px rgba(45, 218, 179, 0.5));
+}
+
+/* Inner pulse dot */
+.loader-dot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #2ddab3;
+    box-shadow: 0 0 16px rgba(45, 218, 179, 0.6);
+    animation: loaderDotPulse 1.2s ease-in-out infinite;
+}
+
+.loader-text {
+    font-family: 'Outfit', 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.65);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    animation: loaderTextFade 1.5s ease-in-out infinite;
+}
+
+@keyframes loaderSpin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes loaderDotPulse {
+    0%, 100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    50% { opacity: 0.4; transform: translate(-50%, -50%) scale(0.6); }
+}
+
+@keyframes loaderTextFade {
+    0%, 100% { opacity: 0.65; }
+    50% { opacity: 0.35; }
+}
