@@ -59,12 +59,5 @@ Note: The live link becomes available after the GitHub Pages workflow runs succe
 	npm run preview
 	```
 
-## GitHub Pages Deployment
-
-This repository includes an automated GitHub Pages workflow in `.github/workflows/deploy-pages.yml`.
-
-- Every push to `master` triggers a fresh production build.
-- The `dist` folder is published automatically to GitHub Pages.
-- Once deployed, use the Live Demo link above to open the site.
 
 <p align="center"><em>Design by Waqar with Love</em></p>
